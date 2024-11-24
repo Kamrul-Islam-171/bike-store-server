@@ -13,7 +13,11 @@ const productSchem = new Schema<Product>({
     description : {type: String, required: true},
     quantity : {type: Number, required: true},
     inStock : {type: Boolean, required: true}
-});
+}, { timestamps : true});
+
+productSchem.post('save', function(doc, next) {
+    next();
+})
 
 
  export const ProductModel = model<Product>('ProductModel', productSchem);
