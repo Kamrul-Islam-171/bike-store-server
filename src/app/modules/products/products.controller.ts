@@ -19,7 +19,7 @@ const createProduct = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(400).json({
       success: false,
-      message: 'Something went wrong',
+      message: 'Validation failed',
       error,
     });
   }
