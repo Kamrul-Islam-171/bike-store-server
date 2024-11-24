@@ -27,9 +27,15 @@ const updateProductIntoDB = async(id : string, product : Product) => {
 
 }
 
+const deleteProductFromDB = async(id : string) => {
+    const result = await ProductModel.deleteOne({_id : new mongoose.Types.ObjectId(id)});
+    return result;
+}
+
 export const productService = {
     createProductIntoDB, 
     getAllBikesFromDB,
     getSingleBikeFromDB,
-    updateProductIntoDB
+    updateProductIntoDB,
+    deleteProductFromDB
 }

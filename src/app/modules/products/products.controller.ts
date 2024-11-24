@@ -79,9 +79,39 @@ const updateProduct = async(req: Request, res: Response) => {
   }
 }
 
+const deleteProduct = async(req: Request, res: Response) => {
+  try {
+    const productId = req.params.productId;
+    
+    const result = await productService.deleteProductFromDB(productId);
+    if(result.deletedCount) {
+
+      res.status(200).json({
+        success: true,
+        message: 'Bike deleted successfully',
+        data: {},
+      });
+    }
+    else {
+      res.status(200).json({
+        success: true,
+        message: 'Bike already deleted ',
+        data: {},
+      });
+    }
+  } catch(error) {
+    res.status(400).json({
+      success: false,
+      message: 'Something went wrong',
+      error,
+    });
+  }
+}
+
 export const productControler = {
   createProduct,
   getAllBikes,
   getSingleBike,
-  updateProduct
+  updateProduct,
+  deleteProduct
 };
