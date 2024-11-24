@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import { Product } from "./products.interface";
 import { ProductModel } from "./products.model";
 
@@ -12,7 +13,13 @@ const getAllBikesFromDB = async() => {
     return result;
 }
 
+const getSingleBikeFromDB = async(id : string) => {
+    const result = await ProductModel.findById({_id: new mongoose.Types.ObjectId(id)});
+    return result;
+}
+
 export const productService = {
     createProductIntoDB, 
-    getAllBikesFromDB
+    getAllBikesFromDB,
+    getSingleBikeFromDB
 }
