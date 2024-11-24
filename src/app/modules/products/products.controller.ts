@@ -60,8 +60,28 @@ const getSingleBike = async (req: Request, res: Response) => {
   }
 };
 
+const updateProduct = async(req: Request, res: Response) => {
+  try {
+    const productId = req.params.productId;
+    const updatedProduct = req.body;
+    const result = await productService.updateProductIntoDB(productId,updatedProduct);
+    res.status(200).json({
+      success: true,
+      message: 'Bikes retrieved successfully',
+      data: result,
+    });
+  } catch(error) {
+    res.status(400).json({
+      success: false,
+      message: 'Something went wrong',
+      error,
+    });
+  }
+}
+
 export const productControler = {
   createProduct,
   getAllBikes,
-  getSingleBike
+  getSingleBike,
+  updateProduct
 };

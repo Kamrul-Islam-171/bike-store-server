@@ -18,8 +18,18 @@ const getSingleBikeFromDB = async(id : string) => {
     return result;
 }
 
+const updateProductIntoDB = async(id : string, product : Product) => {
+    // const result = await ProductModel.updateOne({_id : new mongoose.Types.ObjectId(id)}, {...product});
+
+    //update the data and give you the details of updated data
+    const result = await ProductModel.findByIdAndUpdate({_id : new mongoose.Types.ObjectId(id)}, product, { new : true});
+    return result;
+
+}
+
 export const productService = {
     createProductIntoDB, 
     getAllBikesFromDB,
-    getSingleBikeFromDB
+    getSingleBikeFromDB,
+    updateProductIntoDB
 }
