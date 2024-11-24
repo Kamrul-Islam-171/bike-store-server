@@ -3,7 +3,7 @@ import app from './app';
 // const mongoose = require('mongoose');
 import mongoose from 'mongoose';
 import config from './app/config';
-require('dotenv').config();
+
 
 
 
