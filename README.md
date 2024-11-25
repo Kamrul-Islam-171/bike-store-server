@@ -41,6 +41,39 @@ Calculates the Revenue for orders.
 2. Add the following environment variables:
     1. MONGO_URI - Your MongoDB connection URI (e.g., mongodb://localhost:27017/bike-store)
     2. PORT - The port your Express server should listen to (default is 3000)
-You can add other configurations (e.g., JWT secret for authentication) as needed.
+
+
+## Install Dependencies
+Make sure you're in the project directory:
+
+bash
+Copy code
+cd bike-store-api
+
+Install the necessary Node.js packages:
+Copy code
+npm install
+
+Running the Application
+Start the backend server:
+sql
+Copy code
+npm start
+
+The server should now be running at http://localhost:3000.
+
+
+Endpoints
+Products:
+
+Create a Bike: POST /api/products
+Get All Bikes: GET /api/products
+Get Specific Bike: GET /api/products/:productId
+Update a Bike: PUT /api/products/:productId
+Delete a Bike: DELETE /api/products/:productId
+Orders:
+
+Create Order: POST /api/orders
+Get Orders Revenue: GET /api/orders/revenue
 
 
