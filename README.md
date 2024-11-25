@@ -70,14 +70,14 @@ The server should now be running at http://localhost:3000.
 ## Endpoints
 
 ## Products:
-Create a Bike: POST /api/products
-Get All Bikes: GET /api/products
-Get Specific Bike: GET /api/products/:productId
-Update a Bike: PUT /api/products/:productId
-Delete a Bike: DELETE /api/products/:productId
+1. Create a Bike: POST /api/products
+2. Get All Bikes: GET /api/products
+3. Get Specific Bike: GET /api/products/:productId
+4. Update a Bike: PUT /api/products/:productId
+5. Delete a Bike: DELETE /api/products/:productId
 
 ## Orders:
-Create Order: POST /api/orders
-Get Orders Revenue: GET /api/orders/revenue
+1. Create Order: POST /api/orders
+2. Get Orders Revenue: GET /api/orders/revenue
 
 
