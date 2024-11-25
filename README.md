@@ -46,19 +46,23 @@ Calculates the Revenue for orders.
 ## Install Dependencies
 Make sure you're in the project directory:
 
-bash
+```bash
 Copy code
 cd bike-store-api
+```
 
 Install the necessary Node.js packages:
-Copy code
+
+```Copy code
 npm install
+```
 
 Running the Application
 Start the backend server:
-sql
-Copy code
+
+```Copy code
 npm start
+```
 
 The server should now be running at http://localhost:3000.
 
