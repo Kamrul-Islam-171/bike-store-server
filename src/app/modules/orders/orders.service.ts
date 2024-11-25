@@ -4,7 +4,17 @@ import { Order } from './orders.interface';
 import { OrderModel } from './orders.model';
 
 const CreateOderIntoDB = async (order: Order) => {
+
+  const product = await ProductModel.findById({_id: new mongoose.Types.ObjectId(order.product)});
+
+  if(!product) {
+    throw new Error("Product is not found");
+  }
+  if(product.quantity < order.quantity) {
+    throw new Error("Insufficient stock to fulfill the order.");
+  }
   const result = await OrderModel.create(order);
+
   await ProductModel.findByIdAndUpdate(
     { _id: new mongoose.Types.ObjectId(order.product) },
     {
