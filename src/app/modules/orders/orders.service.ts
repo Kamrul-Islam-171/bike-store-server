@@ -1,17 +1,44 @@
-import mongoose from "mongoose";
-import { ProductModel } from "../products/products.model";
-import { Order } from "./orders.interface";
-import { OrderModel } from "./orders.model";
+import mongoose from 'mongoose';
+import { ProductModel } from '../products/products.model';
+import { Order } from './orders.interface';
+import { OrderModel } from './orders.model';
 
-const CreateOderIntoDB = async(order: Order) => {
-    const result = await OrderModel.create(order);
-    await ProductModel.findByIdAndUpdate({_id : new mongoose.Types.ObjectId(order.product)}, {
-        $inc : {quantity : -order.quantity}
-    });
-    return result;
-}
+const CreateOderIntoDB = async (order: Order) => {
+  const result = await OrderModel.create(order);
+  await ProductModel.findByIdAndUpdate(
+    { _id: new mongoose.Types.ObjectId(order.product) },
+    {
+      $inc: { quantity: -order.quantity },
+    },
+  );
+  return result;
+};
 
+const GetRevenue = async () => {
+  const result = await OrderModel.aggregate([
+    {
+      $project: {
+        total: { $multiply: ['$totalPrice', '$quantity'] },
+      },
+    },
+    {
+      $group: {
+        _id: null,
+        totalRevenue: { $sum: '$total' },
+      },
+    },
+    {
+      $project: {
+        _id:0,
+        totalRevenue: 1,
+      },
+    },
+  ]);
+
+  return result;
+};
 
 export const orderService = {
-    CreateOderIntoDB
-}
+  CreateOderIntoDB,
+  GetRevenue,
+};
