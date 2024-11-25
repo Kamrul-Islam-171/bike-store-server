@@ -21,6 +21,13 @@ const CreateOderIntoDB = async (order: Order) => {
       $inc: { quantity: -order.quantity },
     },
   );
+  const productUpdate = await ProductModel.findById({_id: new mongoose.Types.ObjectId(order.product)});
+  if(!productUpdate) {
+    throw new Error("Product is not found");
+  }
+  if(productUpdate.quantity === 0) {
+    await ProductModel.updateOne({_id: new mongoose.Types.ObjectId(order.product)}, {$set: {inStock: false}} )
+  }
   return result;
 };
 
