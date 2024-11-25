@@ -36,3 +36,11 @@ Automatically set inStock to false if the quantity becomes 0.
 Calculates the Revenue for orders.
 
 
+## Setup Environment Variables
+1. Create a .env file in the root of the project.
+2. Add the following environment variables:
+    i. MONGO_URI - Your MongoDB connection URI (e.g., mongodb://localhost:27017/bike-store)
+   ii. PORT - The port your Express server should listen to (default is 3000)
+You can add other configurations (e.g., JWT secret for authentication) as needed.
+
+
