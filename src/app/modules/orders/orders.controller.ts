@@ -15,17 +15,17 @@ const CreateOrder = async (req: Request, res: Response) => {
     });
   } catch (error) {
     
-    if (error.name === 'ZodError') {
-      res.status(400).json({
+    if (error instanceof Error && error.name === 'ZodError') {
+      res.status(404).json({
         success: false,
         message: 'Validation failed',
         error // Provide detailed validation errors
       });
     } else {
       // Handle other errors (e.g., stock issues, product not found)
-      res.status(400).json({
+      res.status(404).json({
         success: false,
-        message: error.message || 'An error occurred',
+        message: (error as Error).message || 'An error occurred',
       });
     }
   }
