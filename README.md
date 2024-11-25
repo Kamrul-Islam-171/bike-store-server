@@ -47,7 +47,7 @@ Calculates the Revenue for orders.
 Make sure you're in the project directory:
 
 ```bash
-Copy code
+
 cd bike-store-api
 ```
 
@@ -67,16 +67,16 @@ npm start
 The server should now be running at http://localhost:3000.
 
 
-Endpoints
-Products:
+## Endpoints
 
+## Products:
 Create a Bike: POST /api/products
 Get All Bikes: GET /api/products
 Get Specific Bike: GET /api/products/:productId
 Update a Bike: PUT /api/products/:productId
 Delete a Bike: DELETE /api/products/:productId
-Orders:
 
+## Orders:
 Create Order: POST /api/orders
 Get Orders Revenue: GET /api/orders/revenue
 
