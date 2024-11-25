@@ -25,5 +25,14 @@ Automatically updates the updatedAt timestamp to reflect changes.
 **Delete a Bike**:
 Remove a bike from the catalog using its unique productId.
 
+## 2. Order Management
+
+**Place an Order**:
+Validate stock availability before placing an order.
+Reduce the bike's quantity in the inventory.
+Automatically set inStock to false if the quantity becomes 0.
+
+**Calculate Revenue:**
+Calculates the Revenue for orders.
 
 
